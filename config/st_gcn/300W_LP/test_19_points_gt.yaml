@@ -1,0 +1,35 @@
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/GCN_19_points_GroundTruth_5_layers/GCN_head_pose/epoch66_model_mae_5.5307488441467285.pt
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/GCN_19_points_GroundTruth_5_layers/GCN_head_pose/epoch84_model_mae_3.89.gt
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN_test/6_layers/best/epoch34_model.pt
+#weights: work_dir_19_points_FAN_6_layers_train_on_300W_LP_test_on_BIWI/GCN_head_pose/epoch44_model_mae_4.025651454925537.pt
+weights: work_dir_19_points_FAN_6_layers_train_on_300W_LP_test_on_BIWI/GCN_head_pose/epoch38_model_mae_4.053663730621338.pt
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/max_angle_99/AFLW2000_FAN_data_angle99.npy
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/demo_video/demo_video.npy
+#  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/max_angle_99/AFLW2000_FAN_label_angle99.npy
+  data_path: data/mtcnn/BIWI_data_mtcnn_angle99.npy
+  label_path: data/mtcnn/BIWI_label_mtcnn_angle99.npy
+
+
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/BIWI_total_19_points/BIWI_data_angle99_no_track.npy
+ #  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/BIWI_total_19_points/BIWI_label_angle99_no_track.npy
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/demo/demo_data.npy
+#  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/demo/demo_label.npy
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 2
+  num_class: 3
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose_face_19_points'
+    strategy: 'spatial'
+
+# test 
+phase: test
+device: [1]
+test_batch_size: 477
+#test_batch_size: 2048

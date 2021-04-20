@@ -1,0 +1,31 @@
+#weights: ./old_work_dir_2/recognition/kinetics_skeleton/ST_GCN/epoch98_model_mae_4.8134446144104.pt
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN/recognition/Head_Pose/GCN_head_pose/epoch6_model_mae_6.734854221343994.pt
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN_test/recognition/Head_Pose/GCN_head_pose/epoch34_model_mae_6.875377178192139.pt
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN_test/9_layers/epoch8_model_mae_6.605248928070068.pt
+weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN_5_layers_no_attention/recognition/GCN_head_pose/epoch34_model_mae_7.630712032318115.pt
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN_6_layers/recognition/GCN_head_pose/epoch19_model_mae_7.104915142059326.pt
+
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000/test_data_2d.npy
+#  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000/test_label.npy
+ # data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000_19_points/new/AFLW2000_data_angle99.npy
+ # label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000_19_points/new/AFLW2000_label_angle99.npy
+  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/max_angle_99/AFLW2000_FAN_data_angle99.npy
+  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/max_angle_99/AFLW2000_FAN_label_angle99.npy
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 2
+  num_class: 3
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose_face_19_points'
+    strategy: 'spatial'
+
+# test 
+phase: test
+device: [6]
+test_batch_size: 256

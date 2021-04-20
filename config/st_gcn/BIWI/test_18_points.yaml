@@ -1,0 +1,22 @@
+weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_18_points_FAN_BIWI_5_layers/GCN_head_pose/epoch44_model_mae_3.4502170085906982.pt
+
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+    data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/BIWI_test_18_points/BIWI_test_data_angle99.npy
+    label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/BIWI_test_18_points/BIWI_test_label_angle99.npy
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 2
+  num_class: 3
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose_face_18_points'
+    strategy: 'spatial'
+
+# test 
+phase: test
+device: [0,1]
+test_batch_size: 256

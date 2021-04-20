@@ -1,0 +1,25 @@
+weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN_BIWI_7_layers/GCN_head_pose/best/epoch14_model_mae_3.011448860168457.pt
+#weights: /home/intern2/yuanzelin/GCN_head_pose_test/work_dir_19_points_FAN_BIWI_5_layers/GCN_head_pose/epoch29_model_mae_3.3588247299194336.pt
+
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/demo/BIWI_video_24_data_angle99.npy
+#  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/demo/BIWI_video_24_label_angle99.npy
+    data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/BIWI_test_19_points/BIWI_test_data_angle99.npy
+    label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/BIWI_test_19_points/BIWI_test_label_angle99.npy
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 2
+  num_class: 3
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose_face_19_points'
+    strategy: 'spatial'
+
+# test 
+phase: test
+device: [0,1]
+test_batch_size: 256

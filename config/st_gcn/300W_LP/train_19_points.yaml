@@ -1,0 +1,40 @@
+work_dir: ./work_dir/recognition/kinetics_skeleton/ST_GCN
+
+# feeder
+feeder: feeder.feeder.Feeder
+train_feeder_args:
+  random_choose: False
+  random_move: False
+  window_size: 1
+  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/300W_LP_19_points/point19_train_data.npy
+  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/300W_LP_19_points/point19_train_label.npy
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose/data/AFLW2000/test_data.npy
+#  label_path: /home/intern2/yuanzelin/GCN_head_pose/data/AFLW2000/test_label.npy
+test_feeder_args:
+#  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000_19_points/AFLW2000_data_angle180.npy
+#  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000_19_points/AFLW2000_label_angle180.npy
+  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/AFLW2000_FAN_data_angle99.npy
+  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/AFLW2000_FAN_label_angle99.npy
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 2
+  num_class: 3
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose_face_19_points'
+    strategy: 'spatial'
+
+# training
+device: [0,1]           # [0, 1, 2, 3]
+batch_size: 256      # 256 
+test_batch_size: 256   # 256
+
+#optim
+base_lr: 0.1
+step: [50, 100, 200, 250]
+num_epoch: 300
+
+
+

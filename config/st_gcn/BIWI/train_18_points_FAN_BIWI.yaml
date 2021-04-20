@@ -1,0 +1,36 @@
+work_dir: ./work_dir_test/GCN_head_pose
+
+# feeder
+feeder: feeder.feeder.Feeder
+train_feeder_args:
+  random_choose: False
+  random_move: False
+  window_size: 1
+  data_path: /home/intern2/yuanzelin/GCN_head_pose_211/data/FAN/BIWI_train_18_points/BIWI_train_data_angle99.npy
+  label_path: /home/intern2/yuanzelin/GCN_head_pose_211/data/FAN/BIWI_train_18_points/BIWI_train_label_angle99.npy
+test_feeder_args:
+  data_path: /home/intern2/yuanzelin/GCN_head_pose_211/data/FAN/BIWI_test_18_points/BIWI_test_data_angle99.npy
+  label_path: /home/intern2/yuanzelin/GCN_head_pose_211/data/FAN/BIWI_test_18_points/BIWI_test_label_angle99.npy
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 2
+  num_class: 3
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose_face_18_points'
+    strategy: 'spatial'
+
+# training
+device: [0,1]           # [0, 1, 2, 3]
+batch_size: 256      # 256 
+test_batch_size: 256   # 256
+
+#optim
+base_lr: 0.1
+step: [40, 60, 80, 90]
+num_epoch: 100
+
+
+

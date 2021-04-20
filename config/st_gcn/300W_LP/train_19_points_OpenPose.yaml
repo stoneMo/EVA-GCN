@@ -1,0 +1,40 @@
+work_dir: ./work_dir_19_points_OpenPose_5_layers_2/GCN_head_pose
+
+# feeder
+feeder: feeder.feeder.Feeder
+train_feeder_args:
+  random_choose: False
+  random_move: False
+  window_size: 1
+  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/OpenPose/300W_LP_19_points/Openpose_train_data_19_point.npy
+  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/OpenPose/300W_LP_19_points/Openpose_train_label_19_point.npy
+test_feeder_args:
+ # data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000_19_points/AFLW2000_data_angle180.npy
+ # label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/AFLW2000_19_points/AFLW2000_label_angle180.npy
+ # data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/max_angle_99/AFLW2000_FAN_data_angle99.npy
+ # label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/FAN/AFLW2000_19_points/max_angle_99/AFLW2000_FAN_label_angle99.npy
+  data_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/OpenPose/AFLW2000_19_points/no_limit/AFLW2000_OpenPose_data_angle180.npy
+  label_path: /home/intern2/yuanzelin/GCN_head_pose_test/data/OpenPose/AFLW2000_19_points/no_limit/AFLW2000_OpenPose_label_angle180.npy
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 2
+  num_class: 3
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose_face_19_points'
+    strategy: 'spatial'
+
+# training
+device: [0,1]           # [0, 1, 2, 3]
+batch_size: 256     # 256 
+test_batch_size: 256   # 256
+
+#optim
+base_lr: 0.1
+step: [50, 100, 150, 170]
+num_epoch: 200
+
+
+
