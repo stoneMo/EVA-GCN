@@ -1,6 +1,6 @@
 # EVA-GCN: Head Pose Estimation Based on Graph Convolutional Networks
 
-**[accepted to 2021 CVPR Workshop]**
+**[accepted to 2021 CVPR Workshops]**
 
 ![alt text](https://github.com/stoneMo/EVA-GCN/blob/main/imgs/title_image.png?raw=true)
 
@@ -77,3 +77,16 @@ sh run_train_on_300W_LP_test_on_AFLW.sh
 
 Just remember to check which dataset type you want to use in the shell and you are good to go. Note that we calculate the MAE of yaw, pitch, roll independently, and average them into one single MAE for evaluation.
 
+
+## Cite
+
+```
+
+@inproceedings{xin2021evagcn,
+  title={EVA-GCN: Head Pose Estimation Based on Graph Convolutional Networks},
+  author={Miao Xin and Shentong Mo and Yuanze Lin},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+  year={2021}
+}
+
+```
