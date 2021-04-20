@@ -51,7 +51,7 @@ bash run_created_db_300W_AFLW.bash
 
 If you don't want to re-download every dataset images and do the pre-processing again, or maybe you don't even care about the data structure in the folder. Just download the file **data.zip** from the following link, and replace the data subfolder in the data_preprocessing folder.
 
-[Google drive](https://drive.google.com/drive/folders/1A6mraNo3cZBy4Xps9HdxMXnshbG1tmzr?usp=sharing)
+[Google drive](https://drive.google.com/file/d/1myA0xpN0t1Zkufz7Ptk6zmIkp1XFYB0S/view?usp=sharing)
 
 Now you can skip to the "Training and testing" stage. If you want to do the data pre-processing from the beginning, you need to download the dataset first, and unzip the dataset in the dataset folder for data_preprocessing.
 
