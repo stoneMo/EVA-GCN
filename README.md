@@ -85,7 +85,7 @@ Just remember to check which dataset type you want to use in the shell and you a
 @inproceedings{xin2021evagcn,
   title={EVA-GCN: Head Pose Estimation Based on Graph Convolutional Networks},
   author={Miao Xin and Shentong Mo and Yuanze Lin},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops},
   year={2021}
 }
 
