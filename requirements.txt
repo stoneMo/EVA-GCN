@@ -1,0 +1,5 @@
+face-alignment
+numpy
+opencv-python
+torch
+torchvision
